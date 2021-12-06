@@ -5,12 +5,6 @@ import { connect } from 'react-redux';
 import styles from './Task.module.scss';
 
 class Task extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      complete: null,
-    };
-  }
   handleDelete = (id) => {
     this.props.deleteTask(id);
   };
@@ -32,7 +26,6 @@ class Task extends React.Component {
               />
               <Button
                 classStyle="delete"
-                delete
                 text="X"
                 onClick={() => this.handleDelete(el.id)}
               />

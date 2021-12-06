@@ -13,9 +13,6 @@ class AddTask extends React.Component {
       value: '',
     };
   }
-  handleSubmit = (event) => {
-    event.preventDefault();
-  };
   handleAdd = (event) => {
     event.preventDefault();
     if (this.state.value !== '') {
@@ -31,7 +28,7 @@ class AddTask extends React.Component {
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit} className={styles.form}>
+      <form className={styles.form}>
         <InputField
           placeholder="New task"
           value={this.state.value}
