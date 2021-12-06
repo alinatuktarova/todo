@@ -1,0 +1,54 @@
+// .button {
+//   border: 1px solid black;
+//   outline: none;
+//   height: 40px;
+//   font-size: 20px;
+//   padding: 5px 10px;
+//   width: 500px;
+// }
+.add {
+  margin-left: 30px;
+  background-color: white;
+  height: 50px;
+  width: 50px;
+  border: 1px solid black;
+  cursor: pointer;
+}
+
+.delete {
+  margin-left: 30px;
+  background-color: white;
+  height: 30px;
+  width: 30px;
+  color: white;
+  border: 1px solid black;
+  cursor: pointer;
+  border-radius: 15%;
+  background-color: #f33d3df2;
+}
+
+.complete {
+  margin-left: 30px;
+  background-color: white;
+  height: 30px;
+  width: 88px;
+  border-radius: 5px;
+  padding: 5px 15px;
+  color: white;
+  border: 1px solid black;
+  cursor: pointer;
+  background-color: #7d00a7;
+}
+
+.done {
+  width: 88px;
+  margin-left: 30px;
+  background-color: white;
+  height: 30px;
+  border-radius: 5px;
+  padding: 5px 15px;
+  color: white;
+  border: 1px solid black;
+  cursor: pointer;
+  background-color: #00a715e6;
+}

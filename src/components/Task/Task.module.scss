@@ -1,0 +1,34 @@
+.form {
+  display: flex;
+}
+
+.line {
+  padding: 5px 10px;
+  font-size: 20px;
+  color: white;
+  min-height: 50px;
+  width: 500px;
+  border: 1px solid white;
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.text {
+  width: 299px;
+  word-wrap: break-word;
+}
+
+.taskContainer {
+  max-height: 450px;
+  overflow-y: auto;
+}
+
+.taskContainer::-webkit-scrollbar {
+  width: 5px;
+  background-color: black;
+}
+
+// .scroll::-webkit-scrollbar-thumb {
+//   background-color: black;
+// }
