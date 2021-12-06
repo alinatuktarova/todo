@@ -26,11 +26,16 @@ class Task extends React.Component {
             <div className={styles.line}>
               <div className={styles.text}>{el.text}</div>
               <Button
-                complete
+                classStyle={!el.completed ? 'complete' : 'done'}
                 text={!el.completed ? 'Complete' : 'Done'}
                 onClick={() => this.handleComplete(el.id)}
               />
-              <Button delete onClick={() => this.handleDelete(el.id)} />
+              <Button
+                classStyle="delete"
+                delete
+                text="X"
+                onClick={() => this.handleDelete(el.id)}
+              />
             </div>
           ))}
       </div>

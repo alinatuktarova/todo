@@ -37,7 +37,7 @@ class AddTask extends React.Component {
           value={this.state.value}
           onChange={this.handleChange}
         />
-        <Button text="Add" onClick={this.handleAdd} add />
+        <Button text="Add" onClick={this.handleAdd} classStyle="add" />
       </form>
     );
   }
