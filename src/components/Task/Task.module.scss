@@ -24,6 +24,13 @@
   overflow-y: auto;
 }
 
+.checkboxContainer {
+  display: flex;
+  justify-content: center;
+  width: 500px;
+  margin-bottom: 45px;
+}
+
 .taskContainer::-webkit-scrollbar {
   width: 5px;
   background-color: black;
