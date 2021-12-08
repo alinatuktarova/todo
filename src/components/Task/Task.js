@@ -26,6 +26,9 @@ class Task extends React.Component {
     return (
       <>
         <div className={styles.checkboxContainer}>
+          <span className={styles.totalTasks}>
+            Total: {this.props.tasks.length}
+          </span>
           <Checkbox
             text="Complete"
             checked={this.state.complete}
