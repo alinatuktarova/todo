@@ -1,12 +1,20 @@
 .add {
   margin-left: 30px;
-  background-color: white;
+  background-color: transparent;
   height: 50px;
   width: 50px;
-  border: 1px solid black;
+  border: 1px solid white;
   cursor: pointer;
   font-size: 19px;
   border-radius: 5px;
+  color: white;
+  transition: 0.7s;
+}
+
+.add:hover {
+  background-color: #f8bd29;
+  color: black;
+  border-color: black;
 }
 
 .delete {
