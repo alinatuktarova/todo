@@ -21,6 +21,15 @@ const reducer = (state = defaultState, action) => {
           return el;
         }),
       };
+    case '[REDUX][EDIT_TASK]': {
+      return {
+        ...state,
+        tasks: state.tasks.map((el) => {
+          if (el.id === action.$payload.id) el.text = action.$payload.text;
+          return el;
+        }),
+      };
+    }
     default:
       return state;
   }
