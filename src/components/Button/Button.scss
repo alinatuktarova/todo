@@ -18,8 +18,7 @@
 }
 
 .delete {
-  margin-left: 30px;
-  background-color: white;
+  margin-left: 15px;
   height: 30px;
   width: 30px;
   color: white;
@@ -30,7 +29,7 @@
 }
 
 .complete {
-  margin-left: 30px;
+  margin-left: 15px;
   background-color: white;
   height: 30px;
   width: 88px;
@@ -44,7 +43,7 @@
 
 .done {
   width: 88px;
-  margin-left: 30px;
+  margin-left: 15px;
   background-color: white;
   height: 30px;
   border-radius: 5px;
@@ -53,4 +52,61 @@
   border: 1px solid black;
   cursor: pointer;
   background-color: #00a715e6;
+}
+
+.editWaitCheck {
+  width: 30px;
+  margin-left: 20px;
+  height: 30px;
+  border-radius: 5px;
+  padding: 5px 15px;
+  border: none;
+  cursor: pointer;
+  background-image: url(./editing.png);
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-color: transparent;
+}
+
+.edit {
+  width: 30px;
+  margin-left: 20px;
+  height: 30px;
+  border-radius: 5px;
+  padding: 5px 15px;
+  border: none;
+  cursor: pointer;
+  background-image: url(./edit1.png);
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-color: transparent;
+}
+
+.check {
+  width: 30px;
+  margin-left: 15px;
+  height: 30px;
+  border-radius: 5px;
+  padding: 5px 15px;
+  border: none;
+  cursor: pointer;
+  background-image: url(./check.png);
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-color: transparent;
+  opacity: 0.2;
+}
+
+.checkWaitSubmit {
+  width: 30px;
+  margin-left: 15px;
+  height: 30px;
+  border-radius: 5px;
+  padding: 5px 15px;
+  border: none;
+  cursor: pointer;
+  background-image: url(./check1.png);
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-color: transparent;
 }
