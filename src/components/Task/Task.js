@@ -1,14 +1,16 @@
 import React from 'react';
-import { completeTask, deleteTask } from '../../actions/tasks';
+import { completeTask, deleteTask, editTask } from '../../actions/tasks';
 import Button from '../Button/Button';
 import { connect } from 'react-redux';
 import styles from './Task.module.scss';
-import Checkbox from '../Checkbox/Checkbox';
 
 class Task extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { complete: true, done: true };
+    this.myRef = React.createRef();
+    this.state = {
+      editableArray: [],
+    };
   }
   handleDelete = (id) => {
     this.props.deleteTask(id);
@@ -16,83 +18,69 @@ class Task extends React.Component {
   handleComplete = (id) => {
     this.props.completeTask(id);
   };
-  handleCheckComplete = () => {
-    this.setState({ complete: !this.state.complete });
+  handleEdit = (index) => {
+    const newarr = this.state.editableArray.map((_, indexOfArray) => {
+      if (index === indexOfArray) return true;
+      else return false;
+    });
+    this.setState({ editableArray: newarr });
   };
-  handleCheckDone = () => {
-    this.setState({ done: !this.state.done });
+  handleCheck = (id) => {
+    const newarr = this.state.editableArray.map((_) => {
+      return false;
+    });
+    this.setState({ editableArray: newarr });
+    this.props.editTask({ id: id, text: this.myRef.current.innerText });
   };
+
+  componentDidMount() {
+    if (this.props.tasks.length > this.state.editableArray.length) {
+      this.setState({ editableArray: [...this.state.editableArray, false] });
+    }
+  }
+  componentDidUpdate() {
+    if (this.props.tasks.length > this.state.editableArray.length) {
+      this.setState({ editableArray: [...this.state.editableArray, false] });
+    }
+  }
   render() {
     return (
       <>
-        <div className={styles.checkboxContainer}>
-          <span className={styles.totalTasks}>
-            Total: {this.props.tasks.length}
-          </span>
-          <Checkbox
-            text="Complete"
-            checked={this.state.complete}
-            onChange={() => this.handleCheckComplete()}
+        <div className={styles.line} key={this.props.el.id}>
+          <div
+            ref={this.myRef}
+            className={styles.text}
+            suppressContentEditableWarning={true}
+            contentEditable={this.state.editableArray[this.props.index]}
+          >
+            {this.props.el.text}
+          </div>
+          <Button
+            classStyle={!this.props.el.completed ? 'complete' : 'done'}
+            text={!this.props.el.completed ? 'Complete' : 'Done'}
+            onClick={() => this.handleComplete(this.props.el.id)}
           />
-          <Checkbox
-            text="Done"
-            checked={this.state.done}
-            onChange={() => this.handleCheckDone()}
+          <Button
+            classStyle={
+              this.state.editableArray[this.props.index]
+                ? 'editWaitCheck'
+                : 'edit'
+            }
+            onClick={() => this.handleEdit(this.props.index)}
           />
-        </div>
-        <div className={styles.taskContainer}>
-          {this.props.tasks &&
-            this.props.tasks.map((el) => {
-              if (this.state.complete && this.state.done) {
-                return (
-                  <div className={styles.line} key={el.id}>
-                    <div className={styles.text}>{el.text}</div>
-                    <Button
-                      classStyle={!el.completed ? 'complete' : 'done'}
-                      text={!el.completed ? 'Complete' : 'Done'}
-                      onClick={() => this.handleComplete(el.id)}
-                    />
-                    <Button
-                      classStyle="delete"
-                      text="X"
-                      onClick={() => this.handleDelete(el.id)}
-                    />
-                  </div>
-                );
-              } else if (this.state.complete && el.completed === false) {
-                return (
-                  <div className={styles.line} key={el.id}>
-                    <div className={styles.text}>{el.text}</div>
-                    <Button
-                      classStyle={!el.completed ? 'complete' : 'done'}
-                      text={!el.completed ? 'Complete' : 'Done'}
-                      onClick={() => this.handleComplete(el.id)}
-                    />
-                    <Button
-                      classStyle="delete"
-                      text="X"
-                      onClick={() => this.handleDelete(el.id)}
-                    />
-                  </div>
-                );
-              } else if (this.state.done && el.completed === true) {
-                return (
-                  <div className={styles.line} key={el.id}>
-                    <div className={styles.text}>{el.text}</div>
-                    <Button
-                      classStyle={!el.completed ? 'complete' : 'done'}
-                      text={!el.completed ? 'Complete' : 'Done'}
-                      onClick={() => this.handleComplete(el.id)}
-                    />
-                    <Button
-                      classStyle="delete"
-                      text="X"
-                      onClick={() => this.handleDelete(el.id)}
-                    />
-                  </div>
-                );
-              } else return <></>;
-            })}
+          <Button
+            classStyle={
+              this.state.editableArray[this.props.index]
+                ? 'checkWaitSubmit'
+                : 'check'
+            }
+            onClick={() => this.handleCheck(this.props.el.id)}
+          />
+          <Button
+            classStyle="delete"
+            text="X"
+            onClick={() => this.handleDelete(this.props.el.id)}
+          />
         </div>
       </>
     );
@@ -105,6 +93,7 @@ const mapDispatchToProps = (dispatch) => {
   return {
     deleteTask: (id) => dispatch(deleteTask(id)),
     completeTask: (id) => dispatch(completeTask(id)),
+    editTask: (id, text) => dispatch(editTask(id, text)),
   };
 };
 
