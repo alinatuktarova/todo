@@ -1,7 +1,7 @@
 import './App.css';
 import React from 'react';
 import AddTask from './components/AddTask/AddTask';
-import Task from './components/Task/Task';
+import Container from './components/Container/Container';
 
 export default class App extends React.Component {
   render() {
@@ -9,7 +9,7 @@ export default class App extends React.Component {
       <div className="App">
         <h1 className="title">todo - items</h1>
         <AddTask />
-        <Task />
+        <Container />
       </div>
     );
   }

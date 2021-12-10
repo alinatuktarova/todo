@@ -1,0 +1,48 @@
+.form {
+  display: flex;
+}
+
+.line {
+  padding: 5px 10px;
+  font-size: 20px;
+  color: white;
+  min-height: 50px;
+  width: 660px;
+  border: 1px solid white;
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.text {
+  width: 390px;
+  word-wrap: break-word;
+}
+
+.taskContainer {
+  max-height: 450px;
+  overflow-y: auto;
+}
+
+.checkboxContainer {
+  display: flex;
+  justify-content: center;
+  width: 580px;
+  margin-bottom: 45px;
+}
+
+.taskContainer::-webkit-scrollbar {
+  width: 5px;
+  background-color: black;
+}
+
+.totalTasks {
+  color: white;
+  font-size: 18px;
+  font-weight: 700;
+  margin-right: 30px;
+}
+
+// [contenteditable]:focus {
+//   outline: none;
+// }
