@@ -1,10 +1,10 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { v1 as uuidv1 } from 'uuid';
 import { addTask } from '../../actions/tasks';
 import Button from '../Button/Button';
 import InputField from '../InputField/InputField';
-import { connect } from 'react-redux';
 import styles from './AddTask.module.scss';
-import { v1 as uuidv1 } from 'uuid';
 
 class AddTask extends React.Component {
   constructor(props) {
@@ -13,6 +13,7 @@ class AddTask extends React.Component {
       value: '',
     };
   }
+
   handleAdd = (event) => {
     event.preventDefault();
     if (this.state.value !== '') {
@@ -24,6 +25,7 @@ class AddTask extends React.Component {
       this.setState({ value: '' });
     }
   };
+
   handleChange = (event) => this.setState({ value: event.target.value });
 
   render() {
@@ -34,14 +36,19 @@ class AddTask extends React.Component {
           value={this.state.value}
           onChange={this.handleChange}
         />
-        <Button text="Add" onClick={this.handleAdd} classStyle="add" />
+        <Button
+          type="submit"
+          text="Add"
+          onClick={this.handleAdd}
+          classStyle="add"
+        />
       </form>
     );
   }
 }
 
-const mapDispatchToProps = (dispatch) => {
-  return { addTask: (payload) => dispatch(addTask(payload)) };
-};
+const mapDispatchToProps = (dispatch) => ({
+  addTask: (payload) => dispatch(addTask(payload)),
+});
 
 export default connect(null, mapDispatchToProps)(AddTask);

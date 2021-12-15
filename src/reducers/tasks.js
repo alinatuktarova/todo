@@ -2,31 +2,39 @@ const defaultState = {
   tasks: [],
 };
 
-const reducer = (state = defaultState, action) => {
+const reducer = (state = defaultState, action = {}) => {
+  let completed = false;
+  let text = '';
   switch (action.type) {
     case '[REDUX][ADD_TASK]':
       return { ...state, tasks: [...state.tasks, action.$payload] };
     case '[REDUX][DELETE_TASK]':
       return {
         ...state,
-        tasks: state.tasks.filter((el) => {
-          return el.id !== action.$payload;
-        }),
+        tasks: state.tasks.filter((el) => el.id !== action.$payload),
       };
     case '[REDUX][COMPLETE_TASK]':
       return {
         ...state,
         tasks: state.tasks.map((el) => {
-          if (el.id === action.$payload) el.completed = true;
-          return el;
+          completed = !!el.completed;
+          if (el.id === action.$payload) completed = true;
+          return {
+            ...el,
+            completed,
+          };
         }),
       };
     case '[REDUX][EDIT_TASK]': {
       return {
         ...state,
         tasks: state.tasks.map((el) => {
-          if (el.id === action.$payload.id) el.text = action.$payload.text;
-          return el;
+          text = el.text;
+          if (el.id === action.$payload.id) text = action.$payload.text;
+          return {
+            ...el,
+            text,
+          };
         }),
       };
     }

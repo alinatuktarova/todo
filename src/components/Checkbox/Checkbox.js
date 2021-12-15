@@ -2,6 +2,11 @@ import React from 'react';
 import styles from './Checkbox.module.scss';
 
 export default class Checkbox extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {};
+  }
+
   render() {
     return (
       <>

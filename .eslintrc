@@ -1,0 +1,66 @@
+{
+  "env": {
+    "browser": true,
+    "es6": true,
+    "jest": true
+  },
+  "extends": [
+    "react-app",
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "airbnb"
+  ],
+  "globals": {
+    "Atomics": "readonly",
+    "SharedArrayBuffer": "readonly"
+  },
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
+  },
+  // "parser":  "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "ecmaVersion": 2018,
+    "sourceType": "module"
+  },
+  "plugins": ["react", "react-hooks"],
+  "rules": {
+    "react/no-array-index-key": "warn",
+    "react/jsx-props-no-spreading": "off",
+    "react/destructuring-assignment": "off",
+    "jsx-a11y/control-has-associated-label": "warn",
+    "max-len": "warn",
+    "import/no-unresolved": "off",
+    "import/no-cycle": "off",
+    "react/prop-types": 0,
+    "react/jsx-filename-extension": [
+      1,
+      { "extensions": [".js", ".jsx", "tsx"] }
+    ],
+    "import/first": "off",
+    "no-unused-vars": "error",
+    "react-hooks/rules-of-hooks": "error",
+    "semi": "off",
+    // "react-hooks/exhaustive-deps": "off",
+    "import/prefer-default-export": "off",
+    "react/button-has-type": "off",
+    "prefer-const": "off",
+    "linebreak-style": 0,
+    "global-require": 0,
+    "eslint linebreak-style": [0, "error", "windows"],
+    "import/extensions": [
+      "error",
+      "never",
+      {
+        "ts": "never",
+        "tsx": "never",
+        "js": "never",
+        "jsx": "never"
+      }
+    ]
+  }
+}
