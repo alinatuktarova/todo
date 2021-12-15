@@ -12,11 +12,13 @@ class Container extends React.Component {
       done: true,
     };
   }
+
   handleCheckComplete = () => {
-    this.setState({ complete: !this.state.complete });
+    this.setState((prevState) => ({ complete: !prevState.complete }));
   };
+
   handleCheckDone = () => {
-    this.setState({ done: !this.state.done });
+    this.setState((prevState) => ({ done: !prevState.done }));
   };
 
   render() {
@@ -24,7 +26,8 @@ class Container extends React.Component {
       <>
         <div className={styles.checkboxContainer}>
           <span className={styles.totalTasks}>
-            Total: {this.props.tasks.length}
+            Total:
+            {this.props.tasks.length}
           </span>
           <Checkbox
             text="Complete"
@@ -38,15 +41,19 @@ class Container extends React.Component {
           />
         </div>
         <div className={styles.taskContainer}>
+          {/* eslint-disable-next-line operator-linebreak */}
           {this.props.tasks &&
             this.props.tasks.map((el, index) => {
               if (this.state.complete && this.state.done) {
                 return <Task el={el} index={index} />;
-              } else if (this.state.complete && el.completed === false) {
+              }
+              if (this.state.complete && el.completed === false) {
                 return <Task el={el} index={index} />;
-              } else if (this.state.done && el.completed === true) {
+              }
+              if (this.state.done && el.completed === true) {
                 return <Task el={el} index={index} />;
-              } else return <></>;
+              }
+              return null;
             })}
         </div>
       </>
